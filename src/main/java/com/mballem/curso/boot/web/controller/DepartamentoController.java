@@ -5,8 +5,8 @@ import com.mballem.curso.boot.service.DepartamentoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping("/departamentos")
@@ -43,5 +43,13 @@ public class DepartamentoController {
 	public String editar(Departamento departamento) {
 		service.editar(departamento);
 		return "redirect:/departamentos/cadastrar";
+	}
+
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable("id") Long id, ModelMap model) {
+		if (!service.departamentoTemCargos(id))
+			service.excluir(id);
+
+		return listar(model);
 	}
 }
