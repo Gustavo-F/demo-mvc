@@ -19,9 +19,7 @@
 					</a>
 				</div>
 			</nav>
-
 			<div class="container">
-
 				<p>
 					<i class="oi oi-magnifying-glass"></i><span></span>
 					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
@@ -37,7 +35,6 @@
 				<div class="row">
 					<div class="col">
 						<div class="collapse" id="collapseNome">
-
 							<nav class="navbar navbar-light bg-light">
 								<form class="form-inline" method="GET" action="/funcionarios/buscar/nome">
 									<input class="form-control mr-sm-2" type="search" placeholder="nome" aria-label="Search"
@@ -45,14 +42,12 @@
 									<button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 								</form>
 							</nav>
-
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
 						<div class="collapse" id="collapseCargo">
-
 							<nav class="navbar navbar-light bg-light">
 								<form class="form-inline" method="GET" action="/funcionarios/buscar/cargo">
 									<select class="form-control mr-sm-2" name="cargo" aria-label="Search">
@@ -72,14 +67,12 @@
 									<button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 								</form>
 							</nav>
-
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
 						<div class="collapse" id="collapseData">
-
 							<nav class="navbar navbar-light bg-light">
 								<form class="form-inline" method="GET" action="/funcionarios/buscar/data">
 									<input class="form-control mr-sm-2" type="date" aria-label="Search"
@@ -89,12 +82,10 @@
 									<button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 								</form>
 							</nav>
-
 						</div>
 					</div>
 				</div>
-
-
+				<div th:replace="fragments/alert"></div>
 				<div class="table-responsive">
 					<table class="table table-striped table-hover table-sm">
 						<thead>
@@ -136,10 +127,10 @@
 								<td th:text="${#temporals.format(f.dataEntrada, 'dd/MM/yyyy')}"></td>
 								<td th:text="${#temporals.format(f.dataSaida, 'dd/MM/yyyy')}"></td>
 								<td colspan="2">
-									<a class="btn btn-info btn-sm" href="/funcionarios/editar/1" role="button">
+									<a class="btn btn-info btn-sm" th:href="@{/funcionarios/editar/{id} (id=${f.id})}" role="button">
 										<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 									</a>
-									<button id="btn_funcionarios/excluir/1" type="button" class="btn btn-danger btn-sm"
+									<button th:id="${#strings.concat('btn_funcionarios/excluir/', f.id)}" type="button" class="btn btn-danger btn-sm"
 											data-toggle="modal" data-target="#myModal">
 										<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 									</button>
@@ -149,6 +140,7 @@
 					</table>
 				</div>
 			</div>
+			<div th:replace="fragments/modal"></div>
 		</section>
 	</body>
 </html>		
