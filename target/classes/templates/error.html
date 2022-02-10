@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">  
+        <link rel="icon" href="/image/favicon.png">
+
+        <title th:text="${status}"></title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css">
+        
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body class="text-center">
+        <div>
+            <h1 class="h3 mb-3 font-weight-normal">
+                <i class="oi oi-warning"></i>
+                <span th:text="${status}"></span>
+            </h1>
+            <h2 th:text="${error}"></h2>
+            <div>
+                <span th:text="${message}"></span>
+                <br /><br />
+                <a href="javascript:history.back()" class="btn btn-primary" type="button">
+                    Voltar a página anterior
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
